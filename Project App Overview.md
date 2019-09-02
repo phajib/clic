@@ -59,7 +59,7 @@ A Camera Crew Journal app. User creates entries logging date of shoot, equipment
 - log_id
 
 ### Associations
-- belongs_to :user
+- belongs_to :logs
 - has_many :logs through :user
 
 
