@@ -44,6 +44,37 @@ A Camera Crew Journal app. User creates entries logging date of shoot, equipment
 - belongs_to :user
 
 
+## Equipment
+
+### Attributes
+- camera
+- lens
+- speedlight
+- drone
+- accessories
+- user_id
+- log_id
+
+### Associations
+- belongs_to :user
+- has_many :logs through :user
+
+
+## Location
+
+### Attributes
+- name
+- city
+- state
+- country
+- user_id
+- log_id
+
+### Associations
+- belongs_to :logs
+- has_many :logs through :user
+
+
 # MVP
 
 
