@@ -66,16 +66,15 @@ A Camera Crew Journal app. User creates entries logging date of shoot, equipment
 ## Location
 
 ### Attributes
-- name
+- place
 - city
 - state
 - country
-- user_id
 - log_id
 
 ### Associations
 - belongs_to :logs
-- has_many :logs through :user
+- has_many :logs through :users
 
 
 # MVP
