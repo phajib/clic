@@ -6,7 +6,6 @@ class CreateEquipment < ActiveRecord::Migration
       t.string :speedlight
       t.string :drone
       t.string :accessories
-      t.integer :user_id
       t.integer :log_id
 
       t.timestamps null: false
