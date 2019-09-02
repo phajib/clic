@@ -40,6 +40,7 @@ A Camera Crew Journal app. User creates entries logging date of shoot, equipment
 - shoot_title
 - shoot_date
 - notes
+- updated_at
 - user_id  <-- foreign key
 
 ### Associations
