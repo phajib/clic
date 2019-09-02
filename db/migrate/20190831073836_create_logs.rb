@@ -4,8 +4,7 @@ class CreateLogs < ActiveRecord::Migration
       t.integer :user_id
       t.string :shoot_title
       t.datetime :shoot_date
-      t.string :shoot_ocation
-      t.string :equipment
+      t.string :shoot_location
       t.string :notes
 
       t.timestamps null: false
