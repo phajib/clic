@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     get '/users/:slug' do
         @user = User.find_by(id: params[:slug])
         redirect_if_not_logged_in
-    
-        erb :'/users/show'
+
+        erb :'/users/show.html'
       end
 end
