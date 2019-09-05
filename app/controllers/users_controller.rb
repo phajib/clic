@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-    get '/login.html' do
+    get '/users/login.html' do
         redirect_if_logged_in
         erb :'login.html'
     end
 
-    post '/login' do
+    post '/users//login' do
         @user = User.find_by(username: params[:username])
 
         if @user && @user.authenticate(params[:password])
@@ -17,16 +17,9 @@ class UsersController < ApplicationController
         end
     end
     
-    get '/signup.html' do
+    get '/users/signup.html' do
         redirect_if_logged_in
         erb :'signup.html'
-    end
-
-    get '/users/:id' do
-        @user = User.find_by(id: params[:id])
-        redirect_if_not_logged_in
-
-        erb :'/users/show.html'
     end
 
     get '/users/:slug' do
@@ -34,5 +27,6 @@ class UsersController < ApplicationController
         redirect_if_not_logged_in
 
         erb :'/users/show.html'
-      end
+    end
+
 end
