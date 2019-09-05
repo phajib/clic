@@ -22,4 +22,17 @@ class UsersController < ApplicationController
         erb :'signup.html'
     end
 
+    get '/users/:id' do
+        @user = User.find_by(id: params[:id])
+        redirect_if_not_logged_in
+
+        erb :'/users/show.html'
+    end
+
+    get '/users/:slug' do
+        @user = User.find_by(id: params[:slug])
+        redirect_if_not_logged_in
+    
+        erb :'/users/show'
+      end
 end
