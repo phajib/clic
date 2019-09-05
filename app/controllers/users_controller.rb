@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     
     get '/signup.html' do
         redirect_if_logged_in
-        erb :signup
+        erb :'signup.html'
     end
 
 end
