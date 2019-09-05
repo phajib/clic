@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-    get '/login' do
-        erb :login
+    get '/login.html' do
+        redirect_if_logged_in
+        erb :'login.html'
     end
 
     post '/login' do
@@ -12,16 +13,13 @@ class UsersController < ApplicationController
             redirect "users/#{user.id}"
         else
             flash[:errors] = "Your credentials were invalid.  Please sign up or try again."
-            redirect '/login'
+            redirect '/login.html'
         end
     end
     
-    get '/signup' do
-        if logged_in?
-          redirect to '/clic'
-        else
-          erb :'/users/sign_up'
-        end
+    get '/signup.html' do
+        redirect_if_logged_in
+        erb :signup
     end
 
 end
