@@ -4,7 +4,7 @@ class UsersController < ApplicationController
         erb :'login.html'
     end
 
-    post '/users//login' do
+    post '/users/login.html' do
         @user = User.find_by(username: params[:username])
 
         if @user && @user.authenticate(params[:password])
