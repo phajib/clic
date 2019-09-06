@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-    get '/users/login.html' do
+    get '/login.html' do
         redirect_if_logged_in
         erb :'login.html'
     end
 
-    post '/users/login.html' do
+    post '/login.html' do
         @user = User.find_by(username: params[:username])
 
         if @user && @user.authenticate(params[:password])
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         end
     end
     
-    get '/users/signup.html' do
+    get '/signup.html' do
         redirect_if_logged_in
         erb :'signup.html'
     end
