@@ -8,5 +8,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :slug
 
       t.timestamps null: false
+    end
   end
 end
