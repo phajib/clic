@@ -34,4 +34,10 @@ class UsersController < ApplicationController
         redirect '/'
     end
 
+    delete "/users/:slug/delete" do
+        @user = User.find_by_slug(params[:slug])
+        @user.destroy
+        redirect "/"
+    end
+
 end
