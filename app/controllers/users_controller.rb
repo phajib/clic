@@ -1,5 +1,3 @@
-# require "rack-flash"
-
 class UsersController < ApplicationController
     get '/login.html' do
         if logged_in?
@@ -18,15 +16,15 @@ class UsersController < ApplicationController
           if @user
             if @user.authenticate(params[:password])
                 session[:user_id] = @user.id
-                # flash[:notice] = "Welcome back!"
+                flash[:welcome] = "Welcome back #{@user.username} "
                 redirect "/users/#{@user.username}"
                 erb :'/users/show.html'
             else
-              flash[:notice] = "Password incorrect. Please try again."
+              flash[:password] = "Password incorrect. Please try again."
               redirect '/login.html'
             end
           else
-            flash[:notice] = "Username not found. Please try again."
+            flash[:not_found] = "Username not found. Please try again."
             redirect '/login.html'
           end
         end
