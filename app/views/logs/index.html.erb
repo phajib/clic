@@ -2,25 +2,8 @@
     <h2> <%= @user.username %>'s Logs</h2>
     <div style="margin:10px;">
     <% @logs.each do |log_entry| %>
-        <h5><%= log.created_at %></h5>
-        <h4><a href="/logs/<%= log.id %>"><%= log.shoot_title %></a></h4>
-        <p>Shoot Date: <%= log.shoot_date %></p>
-        <br>
-        Location:<br>
-        <p>Place: <%= log.place %></p>
-        <p>City: <%= log.city %></p>
-        <p>Country: <%= log.country %></p><br>
-        <p>Camera: <%= log.camera %></p>
-        <p>Lens: <%= log.lens %></p>
-        <p>Speedlight: <%= log.speedlight %></p>
-        <p>Drone: <%= log.drone %></p>
-        <p>Accessories: <%= log.accessories %></p><br>
-        <p>Notes: <%= log.notes %></p><br>
-        <p>Last Updated: <%= log.updated_at %></p><br>
-        <p>By <%= log.id %></p>
-        <br />
-        <hr />
-        <br />
+        <h4><a href="/logs/<%= log_entry.id %>"><%= log_entry.shoot_title %></a></h4>
+        <h5><%= log_entry.created_at %></h5>
     <% end %>
     </div>
 </div>
