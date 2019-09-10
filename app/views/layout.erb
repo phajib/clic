@@ -16,6 +16,7 @@
   <body>
     <div class="wrapper">
       <% if logged_in? %>
+        <h2> <%= current_user.username %>'s Page </h2>
         <a href="/logout" style="margin-right: 20px;">Log Out</a>
         <a href="/logs" style="margin-right: 20px;">All Logs</a>
         <a href="/logs/new">New Log</a>
