@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
+
     get '/login.html' do
         if logged_in?
-            redirect "/users/#{current_user.id}"
+            redirect "/users/#{current_user.username}"
           else
             erb :'login.html'
         end
@@ -10,15 +11,15 @@ class UsersController < ApplicationController
     post '/login' do
         if params[:username].empty? || params[:password].empty?
           flash[:notice] = "Please enter a valid username AND password."
-          redirect '/'
+          redirect '/login'
         else
           @user = User.find_by(username: params[:username])
           if @user
             if @user.authenticate(params[:password])
                 session[:user_id] = @user.id
                 flash[:welcome] = "Welcome back #{@user.username} "
-                redirect "/users/#{@user.username}"
-                erb :'/users/show.html'
+                redirect "/users/#{@user.slug}"
+                # erb :'/users/show.html'
             else
               flash[:password] = "Password incorrect. Please try again."
               redirect '/login.html'
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
         erb :'signup.html'
     end
 
-    post '/signup' do
+    post '/users' do
         if !params[:username].empty? && !params[:password].empty? && !params[:email].empty? && !logged_in? && !User.find_by(username: params[:username])
             @user = User.create(params)
             session[:user_id] = @user.id
@@ -52,17 +53,21 @@ class UsersController < ApplicationController
         end
     end
 
-    post '/users' do
-        if params[:name] != "" && params[:email] != "" && params[:password] != ""
-          @user = User.create(params)
-          session[:user_id] = @user.id 
-          redirect "/users/#{@user.id}"
-          erb :'/users/show'
-        else
-            flash[:empty] = "Please enter a username, password, AND email."
-          redirect '/signup'
-        end
-    end
+    # post '/users' do
+    #     if !User.find_by(username: params[:username])
+    #       if params[:username] != "" && params[:email] != "" && params[:password] != ""
+    #         @user = User.create(params)
+    #         session[:user_id] = @user.id
+    #         redirect "/users/#{@user.username}" #creates a new HTTP request
+    #       else
+    #         flash[:notice] = "Invalid Entry. Please complete all fields."
+    #         redirect '/signup'
+    #       end
+    #     else
+    #       flash[:notice] = "Username taken. Please try another."
+    #       redirect '/signup'
+    #     end
+    # end
 
     get '/users/:slug' do
         @user = User.find_by(slug: params[:slug])
