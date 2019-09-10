@@ -3,7 +3,7 @@ class LogsController < ApplicationController
     get '/logs' do
         redirect_if_not_logged_in
         @user = current_user
-        @logs = Logs.all
+        @logs = Log.all
         erb :'/logs/index.html'
     end
 
@@ -14,7 +14,7 @@ class LogsController < ApplicationController
     post '/logs' do
         redirect_if_not_logged_in
         if params[:shoot_title] || params[:shoot_date] || params[:place] || params[:city] || params[:country] || params[:camera] || params[:lens] || params[:speedlight] || params[:drone] || params[:accessories] || params[:notes] != ""
-            @logs = logs.create(params)
+            @logs = Log.create(shoot_title: params[:shoot_title], place: params[:place], city: params[:city], country: params[:country], camera: params[:camera], lens: params[:lens], speedlight: params[:speedlight], drone: params[:drone], accessories: params[:accessories], notes: params[:notes], updated_at: params[:updated_at])
             redirect "/logs/#{@logs.id}"
         else
             redirect '/logs/new'
@@ -66,6 +66,6 @@ class LogsController < ApplicationController
     #helper method to prevent code duplication
     private #this method will only be used here
     def find_entry
-        @logs = Logs.find(params[:id])
+        @logs = Log.find(params[:id])
     end
 end
