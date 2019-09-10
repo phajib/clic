@@ -1,5 +1,5 @@
 class Log < ActiveRecord::Base
-    belongs_to :users
+    belongs_to :user
 
     include Slugifiable::InstanceMethods
     extend Slugifiable::ClassMethods
