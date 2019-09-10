@@ -11,16 +11,27 @@ class LogsController < ApplicationController
         erb :'/logs/new.html'
     end
 
-    post '/logs' do
-        redirect_if_not_logged_in
-        # if !params.empty?
-        if params[:shoot_title] || params[:shoot_date] || params[:place] || params[:city] || params[:country] || params[:camera] || params[:lens] || params[:speedlight] || params[:drone] || params[:accessories] || params[:notes] != ""
+    # post '/logs' do
+    #     redirect_if_not_logged_in
+    #     # if !params.empty?
+    #     if params[:shoot_title] || params[:shoot_date] || params[:place] || params[:city] || params[:country] || params[:camera] || params[:lens] || params[:speedlight] || params[:drone] || params[:accessories] || params[:notes] != ""
             
-            # @logs = Log.create(shoot_title: params[:shoot_title], place: params[:place], city: params[:city], country: params[:country], camera: params[:camera], lens: params[:lens], speedlight: params[:speedlight], drone: params[:drone], accessories: params[:accessories], notes: params[:notes], updated_at: params[:updated_at])
-            @logs = Log.create(params)
-            redirect "/logs/#{@logs.id}"
+    #         # @logs = Log.create(shoot_title: params[:shoot_title], place: params[:place], city: params[:city], country: params[:country], camera: params[:camera], lens: params[:lens], speedlight: params[:speedlight], drone: params[:drone], accessories: params[:accessories], notes: params[:notes], updated_at: params[:updated_at])
+    #         @logs = Log.create(params)
+    #         redirect "/logs/#{@logs.id}"
+    #     else
+    #         redirect '/logs/new'
+    #     end
+    # end
+    post '/logs' do
+        if params[:shoot_title].empty? || params[:shoot_date].empty? || params[:place].empty? || params[:city].empty? || params[:country].empty?
+          flash[:empty] = "Please include at least a location AND date."
+          redirect '/logs/new'
         else
-            redirect '/logs/new'
+          @user = current_user
+          @logs = Log.create(params)
+          user.logs << logs
+          redirect "/logs/#{user.logs.last.id}"
         end
     end
 
