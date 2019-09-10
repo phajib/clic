@@ -15,10 +15,15 @@
   </head>
   <body>
     <div class="wrapper">
+      <% if logged_in? %>
+        <a href="/logout" style="margin-right: 20px;">Log Out</a>
+        <a href="/logs" style="margin-right: 20px;">All Logs</a>
+        <a href="/logs/new">New Log</a>
+      <% end %>
 
         <%= yield %>
 
-      <footer class="branding">
+      <footer class="branding" style="margin-left: 40px;">
         <small>&copy; 2019 <strong>CLIC</strong></small>
       </footer>
     </div>
