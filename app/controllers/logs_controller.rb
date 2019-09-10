@@ -13,6 +13,7 @@ class LogsController < ApplicationController
 
     post '/logs' do
         redirect_if_not_logged_in
+        # if !params.empty?
         if params[:shoot_title] || params[:shoot_date] || params[:place] || params[:city] || params[:country] || params[:camera] || params[:lens] || params[:speedlight] || params[:drone] || params[:accessories] || params[:notes] != ""
             
             # @logs = Log.create(shoot_title: params[:shoot_title], place: params[:place], city: params[:city], country: params[:country], camera: params[:camera], lens: params[:lens], speedlight: params[:speedlight], drone: params[:drone], accessories: params[:accessories], notes: params[:notes], updated_at: params[:updated_at])
