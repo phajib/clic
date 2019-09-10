@@ -1,3 +1,3 @@
-<p><% @user.logs.reverse_each do |entry| %>
+<p><% current_user.logs.reverse_each do |entry| %>
     <h2><a href="/logs/<%= entry.id %>"><%= entry.shoot_date %>, <%= entry.shoot_title %></a></h2>
 <% end %></p>
