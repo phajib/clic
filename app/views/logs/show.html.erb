@@ -1,0 +1,30 @@
+<div style="margin-left: 40px;">
+    <h2>Shoot Log</h2>
+    <h3><%= @logs.shoot_title %></h3>
+    <p><%= @logs.shoot_date %></p>
+    <p><a style="margin-bottom: 35px;" href="/logs/<%= @logs.id %>/edit">Edit Entry</a></p>
+    
+    <br>Location:<br>
+    <p>City: <%= @logs.city %></p>
+    <p>Place: <%= @logs.place %></p>
+    <p>Country: <%= @logs.country %></p><br>
+
+    <br>Gear:<br>
+    <p>Camera: <%= @logs.camera %></p>
+    <p>Lens: <%= @logs.lens %></p>
+    <p>Speedlight: <%= @logs.speedlight %></p>
+    <p>Drone: <%= @logs.drone %></p>
+    <p>Accessories: <%= @logs.accessories %></p>
+    <br>
+    <p>Notes: <%= @logs.notes %></p><br>
+
+    <form class="" action="/logs/<%= @logs.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" name="" value="Delete Log">
+    </form>
+
+    <form class="" action="/logs/<%= @logs.id %>/edit">
+        <input type="hidden" name="_method" value="EDIT">
+        <input type="submit" name="" value="Edit Log">
+    </form>
+</div>
