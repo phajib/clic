@@ -4,25 +4,24 @@ class UsersController < ApplicationController
         if logged_in?
             redirect "/users/#{current_user.username}"
           else
-            erb :'login.html'
+            erb :'/users/login.html'
         end
     end
 
     post '/login' do
         if params[:username].empty? || params[:password].empty?
-          flash[:notice] = "Please enter a valid username AND password."
-          redirect '/login'
+          flash[:login] = "Please enter a valid username AND password."
+          redirect '/login.html'
         else
           @user = User.find_by(username: params[:username])
           if @user
             if @user.authenticate(params[:password])
                 session[:user_id] = @user.id
                 flash[:welcome] = "Welcome back #{@user.username} "
-                redirect "/users/#{@user.slug}"
-                # erb :'/users/show.html'
+                redirect "/users/#{@user.id}"
             else
-              flash[:password] = "Password incorrect. Please try again."
-              redirect '/login.html'
+                flash[:password] = "Password incorrect. Please try again."
+                redirect '/login.html'
             end
           else
             flash[:not_found] = "Username not found. Please try again."
@@ -32,7 +31,7 @@ class UsersController < ApplicationController
     end
 
     get '/signup.html' do
-        erb :'signup.html'
+        erb :'/users/signup.html'
     end
 
     post '/users' do
@@ -47,9 +46,9 @@ class UsersController < ApplicationController
             redirect '/signup'
         elsif params[:username].empty? || params[:password].empty? || params[:email].empty?
             flash[:empty] = "Please enter a username, password, AND email."
-            redirect '/signup'
+            redirect '/users/signup'
         else
-            redirect '/signup'
+            redirect '/users/signup'
         end
     end
 
