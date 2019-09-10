@@ -23,14 +23,14 @@ class LogsController < ApplicationController
 
     get '/logs/:id' do
         find_entry
-        erb :'/logs/show'
+        erb :'/logs/show.html'
     end
 
     get '/logs/:id/edit' do
         find_entry
         if logged_in?
             if @logs.user == current_user
-                erb :'/logs/edit'
+                erb :'/logs/edit.html'
             else
                 redirect "users/#{current_user.id}"
             end
