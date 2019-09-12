@@ -165,12 +165,4 @@ h1 {
     margin: 0 auto;
   }
 
-  .flash {
-    font-size: x-large;
-    text-align: center;
-    background-color: #eb5e30;
-    color: white;
-    padding: 0.5em;
-    border-radius: 1em;
-  }
 }
