@@ -31,7 +31,9 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    
+    def confirm_id?(logs)
+      current_user.id == @logs.id
+    end
   end
 
 end
