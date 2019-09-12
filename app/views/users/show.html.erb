@@ -1,3 +1,8 @@
-<p><% current_user.logs.reverse_each do |entry| %>
-    <h2><a href="/logs/<%= entry.id %>"><%= entry.shoot_date %>, <%= entry.shoot_title %></a></h2>
-<% end %></p>
+<div class="container" style="margin: 20px 40px;">
+
+    <p><% current_user.logs.reverse_each do |entry| %>
+        <h2><a href="/logs/<%= entry.id %>"><%= entry.shoot_title %></a></h2>
+        <h4><%= entry.shoot_date %></h4>
+    <% end %></p>
+
+</div>
