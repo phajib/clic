@@ -1,9 +1,12 @@
 <div style="margin: 20px 40px;">
-    <h2> <%= @user.username %>'s Logs</h2>
+
     <div style="margin:10px;">
-    <% @logs.each do |log_entry| %>
-        <h4><a href="/logs/<%= log_entry.id %>"><%= log_entry.shoot_title %></a></h4>
-        <h5><%= log_entry.created_at %></h5>
-    <% end %>
+        <% if current_user.id == session[:user_id] %>
+            <% @logs.each do |log_entry| %>
+                <h3><a href="/logs/<%= log_entry.id %>"><%= log_entry.shoot_title %></a></h3>
+                <h5><%= log_entry.created_at %></h5>
+            <% end %>
+        <% end %>
     </div>
+
 </div>
