@@ -1,21 +1,53 @@
-<div class="container" style="margin: 20px 40px;">
+<div class="container">
+    <h3 class="text-white">Sign up</h3>
 
-    <h2>Sign Up</h2>
+    <form action="/signup" class="needs-validation" method="post">
+    <div class="form-group">
+        <label class="text-white" for="username">Username:</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
 
-    <form class="" action="/users" method="post">
-        <label for="username">Username: </label>
-        <input type="text" name="username" value="">
-        <label for="name">Name: </label>
-        <input type="text" name="name" value="">
-        <label for="email">Email: </label>
-        <input type="text" name="email" value="">
-        <label for="password">Password: </label>
-        <input type="password" name="password" value="">
-        <input type="submit" name="" value="Create User">
-        <br>
-        <input type="reset" value="Clear All">
+    <div class="form-group">
+        <label class="text-white" for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <div class="form-group">
+        <label class="text-white" for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <div class="form-group">
+        <label class="text-white" for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <br><br>
+
+    <div class="form-group">
+        <label class="text-white" for="bio">About you:</label>
+        <input type="text" class="form-control" id="bio" placeholder="Say a little something about yourself" name="bio">
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <br><br><br>
+    <p class="mb-0 text-white-50">“The people who hire me as a wedding photographer hire me not just because of my photographic style, they hire me because of the style of my personality. My style and personality match, so they know they’re getting a genuine style.”
+– Jared Platt</p>
+
+    <br><br><br>
+    <input type="reset" value="Clear All">
+    <input type="button" value="Back" onclick="history.back()">
     </form>
-    <br>
-    <a href="/"><input type="submit" value="Back"></a>
 
 </div>

@@ -1,8 +1,13 @@
-<div class="container" style="margin: 20px 40px;">
-
-    <p><% current_user.logs.reverse_each do |entry| %>
-        <h2><a href="/logs/<%= entry.id %>"><%= entry.shoot_title %></a></h2>
-        <h4><%= entry.shoot_date %></h4>
-    <% end %></p>
-
-</div>
+<% if logged_in? %>
+    <% if current_user.logs.empty? %>
+        <p class="text-white">It's to get to work and enter a <a href="/logs/new">New Log</a> </p>
+    <% else %>
+    <%# Show's current users Logs %>
+        <p><% current_user.logs.reverse_each do |entry| %>
+        <div class="mx-auto text-center">
+            <h2><a href="/logs/<%= entry.id %>"><%= entry.shoot_title %></a></h2>
+            <br><br>
+        </div>
+        <% end %></p>
+    <% end %>
+<% end %>

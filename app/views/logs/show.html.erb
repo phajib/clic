@@ -1,33 +1,35 @@
 <div style="margin-left: 40px;">
-    <% if confirm_id?(@logs) %>
-        <form action="/logs/<%= @logs.id %>/edit">
-            <input type="hidden" name="" value="EDIT">
-            <input type="submit" name="" value="Edit Log">
-        </form>
 
-        <form action="/logs/<%= @logs.id %>" method="post">
-            <input type="hidden" id="hidden" name="_method" value="DELETE">
-            <input type="submit" name="" value="Delete Log">
-        </form>
-    <% end %>
+    <form action="/logs/<%= @logs.id %>/edit">
+        <input type="hidden" name="" value="EDIT">
+        <input type="submit" name="" value="Edit Log">
+    </form>
     <br>
-    <h2>Shoot Log</h2>
-    <h3><%= @logs.shoot_title %></h3>
-    <p><%= @logs.shoot_date %></p>
-    <p>Notes: <%= @logs.notes %></p><br>
+    <form action="/logs/<%= @logs.id %>/delete" method="post">
+        <input type="hidden" id="hidden" name="_method"value="DELETE">
+        <input type="submit" value="Delete Log">
+    </form>
 
-    <br><strong>Location:</strong><br>
-    <p>City: <%= @logs.city %></p>
-    <p>Place: <%= @logs.place %></p>
-    <p>State: <%= @logs.state %></p>
-    <p>Country: <%= @logs.country %></p><br>
+    <br>
+    <h2 class="text-white">Shoot Log</h2>
+    <h3 class="text-white"><%= @logs.shoot_title %></h3>
+    <h2 class="text-white"><%= @logs.shoot_date %></h2>
+    <p class="mb-0 text-white-50">Notes: <%= @logs.notes %></p><br>
 
-    <br><strong>Gear:</strong><br>
-    <p>Camera: <%= @logs.camera %></p>
-    <p>Lens: <%= @logs.lens %></p>
-    <p>Speedlight: <%= @logs.speedlight %></p>
-    <p>Drone: <%= @logs.drone %></p>
-    <p>Accessories: <%= @logs.accessories %></p>
+    <br>
+    <h5 class="text-white">Location:</h5>
+    <p class="mb-0 text-white-50">Place: <%= @logs.place %></p>
+    <p class="mb-0 text-white-50">City: <%= @logs.city %></p>
+    <p class="mb-0 text-white-50">State: <%= @logs.state %></p>
+    <p class="mb-0 text-white-50">Country: <%= @logs.country %></p><br>
+
+    <br>
+    <h5 class="text-white">Gear:</h5>
+    <p class="mb-0 text-white-50">Camera: <%= @logs.camera %></p>
+    <p class="mb-0 text-white-50">Lens: <%= @logs.lens %></p>
+    <p class="mb-0 text-white-50">Speedlight: <%= @logs.speedlight %></p>
+    <p class="mb-0 text-white-50">Drone: <%= @logs.drone %></p>
+    <p class="mb-0 text-white-50">Accessories: <%= @logs.accessories %></p>
     <br>
 
 </div>

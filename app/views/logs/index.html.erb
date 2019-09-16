@@ -1,12 +1,20 @@
 <div style="margin: 20px 40px;">
-
     <div style="margin:10px;">
+    <% if current_user %>
         <% if current_user.id == session[:user_id] %>
+            <%# Show's logs %>
             <% @logs.each do |log_entry| %>
                 <h3><a href="/logs/<%= log_entry.id %>"><%= log_entry.shoot_title %></a></h3>
-                <h5><%= log_entry.created_at %></h5>
+                <h5><%= log_entry.shoot_date %></h5>
+            <% end %>
+        <% else %>
+            <%# Show's logs but cannot click on them %>
+            <% @logs.each do |log_entry| %>
+                <h3><%= log_entry.shoot_title %></a></h3>
+                <h5><%= log_entry.shoot_date %></h5>
             <% end %>
         <% end %>
+    <% end %>
     </div>
 
 </div>
