@@ -1,0 +1,62 @@
+
+<h3 class="text-white">Edit <%= current_user.name %>'s Details</h3>
+
+<form action="/users/<%= @user.id %>" class="needs-validation" method="post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+    <div class="form-group">
+        <label class="text-white" for="username">Username:</label>
+        <input type="text" class="form-control" id="username" value="<%= current_user.username%>" name="username" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <div class="form-group">
+        <label class="text-white" for="name">Name:</label>
+        <input type="text" class="form-control" id="name" value="<%= current_user.name%>" placeholder="Enter name" name="name" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <div class="form-group">
+        <label class="text-white" for="email">Email:</label>
+        <input type="email" class="form-control" id="email" value="<%= current_user.email%>" placeholder="Enter email" name="email" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <div class="form-group">
+        <label class="text-white" for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <br><br>
+
+    <div class="form-group">
+        <label class="text-white" for="bio">About you:</label>
+        <input type="text" class="form-control" id="bio" value="<%= current_user.bio%>" placeholder="Say a little something about yourself" name="bio">
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <br><br><br>
+    <input type="reset" value="Clear All">
+    <input type="button" value="Back" onclick="history.back()">
+</form>
+
+<br><br>
+
+<div class="formButton">
+    <form action="/users/<%= current_user.id %>">
+        <input type="submit" value="Cancel" />
+    </form>
+
+    <form action="/users/<%= current_user.id %>" method="post">
+      <input type="hidden" id="hidden" value="delete" name="_method">
+      <input type="submit" value="Delete User" />
+    </form>
+</div>
